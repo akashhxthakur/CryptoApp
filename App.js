@@ -13,13 +13,19 @@ import ResetPassword1 from './src/Screens/ResetPassword1'
 import LoginSuccess from './src/Screens/LoginSuccess'
 import Wallet from './src/Screens/Wallet'
 import Profile from './src/Screens/Profile'
+import EditProfile from './src/Screens/EditProfile'
+import ChangePassword from './src/Screens/ChangePassword'
+import Verification from './src/Screens/Verification'
 
 
 
 export default function App() {
   return (
     <View style={{flex:1}}>
-      <Profile />
+      <Verification />
+      {/* <ChangePassword /> */}
+      {/* <EditProfile /> */}
+      {/* <Profile /> */}
       {/* <Wallet />
       <LoginSuccess />
       <ResetPassword1 />

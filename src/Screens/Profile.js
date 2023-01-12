@@ -42,7 +42,7 @@ export default function Profile() {
                 <TouchableOpacity>
                     <Image style={{ top: -600, width: 160, height: 160, left: 50 }} source={require('../Assets/Profile/rect2.png')} />
                     <Image style={{ top: -720, width: 51, height: 50, left: 103 }} source={require('../Assets/Profile/green.png')} />
-                    <Image style={{ top: -760, width: 25, height: 23, left: 117 }} source={require('../Assets/Profile/sv1.png')} />
+                    <Image style={{ top: -760, width: 25, height: 23, left: 117 }} source={require('../Assets/Profile/g2.png')} />
                     <Image style={{ top: -735, width: 39, height: 23, left: 110 }} source={require('../Assets/Profile/sa.png')} />
                 </TouchableOpacity>
             </View>
