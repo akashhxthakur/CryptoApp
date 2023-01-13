@@ -1,7 +1,11 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import { Actions } from 'react-native-router-flux';
 import React from 'react'
 
 export default function Login() {
+    const goToSuccess = () => {
+        Actions.loginSuccess()
+     }
     return (
         <View style={styles.container}>
             <View style={{ marginTop: 20 }}>
@@ -20,16 +24,10 @@ export default function Login() {
                     <TextInput style={{ color: "grey", fontSize: 15, position: 'absolute', left: 18, top: 120 }} secureTextEntry={true} placeholder='Enter password'></TextInput>
                     <Image style={styles.eye} source={require('../../src/Assets/eye.png')} />
                     <Text style={{ color: 'grey', position: 'absolute', fontSize: 10, fontWeight: 'bold', top: 155, right: 10 }}>Forgot password ?</Text>
-                    <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
+                    <Image  style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
                     <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 205 }}>Sign In</Text>
                     <Image style={styles.loginButton3} source={require('../../src/Assets/createnewaccount.png')} />
 
-                    {/* <View style={{justifyContent: 'center' }}>
-                    <TouchableOpacity>
-                        <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
-                        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 24 }}>Sign In</Text>
-                    </TouchableOpacity>
-                </View> */}
                 </View>
 
             </View>

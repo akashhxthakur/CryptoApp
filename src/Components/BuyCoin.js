@@ -1,303 +1,377 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView, TextInput, CheckBox, Button, Pressable } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView, TextInput, CheckBox, Button, Pressable, Modal } from 'react-native'
+export default function Wallet() {
+    // const [active , setactive] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
 
-export default function BuyCoin() {
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <View style={{ backgroundColor: '#161729', }}>
 
-            <View style={{ flex: 1, backgroundColor: '#161729' }}>
-
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10 }}>
-                    <TouchableOpacity>
-                    <LinearGradient colors={['#4DB5FE','#8349FC', ]} style={styles.linearGradient}  start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
-                        <Text style={{ color: 'white',  fontWeight: 'bold', borderRadius: 6, padding: 6, }}>Buy Coin</Text>
-                        </LinearGradient>
+                <View style={styles.head}>
+                    <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
+                        <Image source={require('../../src/Assets/dashboard.png')} style={{ height: 20, width: 20, color: '#02A3F7' }} />
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={{ color: 'white', fontWeight: 'bold', padding: 6 }}>Buy Coins History</Text>
+                    <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', textAlign: 'center', left: 10 }}>Buy Coin</Text>
+                    <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                    }}>
+                        <TouchableOpacity>
+                            <Image style={{ height: 21, width: 20, right: 10 }} source={require('../../src/Assets/off.png')} />
 
-                    </TouchableOpacity>
+                        </TouchableOpacity><TouchableOpacity>
+                            <Image style={{ height: 21, width: 20 }} source={require('../../src/Assets/notification.png')} />
+
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-                <View
-                            style={{
-                                marginTop: 10,
-                                borderBottomColor: '#403E62',
-                                borderBottomWidth: StyleSheet.hairlineWidth,
-                            }}
-                        />
-                <ScrollView>
 
-                    <View style={{ borderWidth: 1, borderColor: '#403E62', height: '30%', margin: 10, borderRadius: 8, padding: 10, marginTop: 10 }}>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10, fontWeight: 'bold' }}>SALE ENDS IN</Text>
-                        {/* <Text style={{ color: "white", textAlign: "center", marginTop: 10, fontWeight: 'bold', fontSize: 30 }}>21 : 10 : 32 : 52</Text> */}
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10, fontWeight: 'bold', fontSize: 28 }}>21</Text>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10, fontWeight: 'bold', fontSize: 28 }}>: 10</Text>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10, fontWeight: 'bold', fontSize: 28 }}>: 32</Text>
-                        <Text style={{ color: "white", textAlign: "center", marginTop: 10, fontWeight: 'bold', fontSize: 28 }}>: 52</Text>
-                        </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
+                <View style={{
+                    justifyContent: 'center', marginTop: 30, flexDirection: 'row', justifyContent: 'space-between'
+                }}>
+                    <TouchableOpacity>
+                        <Image style={{ height: 50, width: 128, left: 50 }} source={require('../../src/Assets/BuyCoin/bn.png')} />
+                    </TouchableOpacity>
 
-                            <Text style={{ color: "#4FAEFD", marginTop: -15, fontSize: 11 }}>Days</Text>
-                            <Text style={{ color: "#4FAEFD", marginTop: -15, fontSize: 11 }}>Hours</Text>
-                            <Text style={{ color: "#4FAEFD", marginTop: -15, fontSize: 11 }}>Minutes</Text>
-                            <Text style={{ color: "#4FAEFD", marginTop: -15, fontSize: 11 }}>Seconds</Text>
+                    <TouchableOpacity>
+                        <Image style={{ height: 10, width: 80, right: 50, top: 20 }} source={require('../../src/Assets/BuyCoin/bch.png')} />
+                    </TouchableOpacity>
+
+                </View>
+                <Image style={{ top: 25, alignItems: 'center', left: 25, width: 350 }} source={require('../../src/Assets/line.png')} />
+
+                <View style={styles.centeredView}>
+                    <Modal
+                        animationType="slideIn"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            setModalVisible(!modalVisible);
+                        }}
+                    >
+                        <View >
+                            <Image style source={require('../../src/Assets/Profile/Sidebar/rect.png')}></Image>
+                            <View style={{ top: -1110 }}>
+                                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
+                                    <Image style={{ left: 15, height: 20, width: 20 }} source={require('../../src/Assets/x.png')} />
+                                </TouchableOpacity>
+                                <Image style={{ width: 78, height: 20, left: 125, top: -20 }} source={require('../../src/Assets/Profile/Profile.png')} />
+                                <Image style={{ width: "20%", height: 80, left: 125 }} source={require('../../src/Assets/Profile/person.png')} />
+                                <Image style={{ top: 10, width: 200, height: 18, left: 70 }} source={require('../../src/Assets/Profile/welcomeUser.png')} />
+                                <Image style={{ top: 30, width: 250, height: 1, left: 50 }} source={require('../../src/Assets/Profile/Sidebar/--.png')} />
+                                <ScrollView style={{ top: 40, height: '100%' }}>
+                                    <TouchableOpacity>
+                                        <Image style={{ top: 10, width: 250, height: 40, left: 50 }} source={require('../../src/Assets/Profile/Sidebar/rect1.png')} />
+                                        <Image style={{ top: -18, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/dash.png')} />
+                                        <Image style={{ top: -30, width: 70, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Dashboard.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity>
+                                        <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/c.png')} />
+                                        <Image style={{ top: -15, width: 50, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/bc.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/sr.png')} />
+                                        <Image style={{ top: -15, width: 80, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Send/Receive.png')} />
+                                        <Image style={{ top: -25, width: 5, height: 5, left: 280 }} source={require('../../src/Assets/Profile/Sidebar/v.png')} />
+
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 12, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/t.png')} />
+                                        <Image style={{ top: -15, width: 130, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/st.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/w.png')} />
+                                        <Image style={{ top: -15, width: 40, height: 11, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Wallet.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/s.png')} />
+                                        <Image style={{ top: -15, width: 60, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/sc.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 12, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/$.png')} />
+                                        <Image style={{ top: -15, width: 110, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/th.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 15, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/a.png')} />
+                                        <Image style={{ top: -15, width: 80, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/ab.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/o.png')} />
+                                        <Image style={{ top: -15, width: 35, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Offer.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 15, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/q.png')} />
+                                        <Image style={{ top: -15, width: 22, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/FAQ.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/set.png')} />
+                                        <Image style={{ top: -15, width: 50, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Settings.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -1, width: 16, height: 14, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/out.png')} />
+                                        <Image style={{ top: -15, width: 44, height: 13, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Log.png')} />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ marginTop: 10 }}>
+                                        <Image style={{ top: -5, width: 50, height: 9, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/visit.png')} />
+                                    </TouchableOpacity>
+                                    <Image style={{ top: 5, width: 100, height: 10, left: 90 }} source={require('../../src/Assets/Profile/Sidebar/nov.png')} />
+                                    <Image style={{ top: -5, width: 40, height: 8, left: 195 }} source={require('../../src/Assets/Profile/Sidebar/time.png')} />
+                                    <Image style={{ top: 0, width: 250, height: 1, left: 50 }} source={require('../../src/Assets/Profile/Sidebar/line.png')} />
+                                    <Image style={{ top: 10, width: 30, height: 30, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/prsn.png')} />
+                                    <Image style={{ top: -12, width: 100, height: 13, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/peter.png')} />
+
+                                </ScrollView>
+
+                            </View>
                         </View>
-                        <View
-                            style={{
-                                marginTop: 10,
-                                borderBottomColor: '#403E62',
-                                borderBottomWidth: StyleSheet.hairlineWidth,
-                            }}
-                        />
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
-                            <Text style={{ color: "white", fontWeight: 'bold' }}>Starts At</Text>
-                            <Text style={{ color: "white", fontWeight: 'bold' }}>ENDS AT</Text>
+                    </Modal>
+                </View>
+                <ScrollView style={{ top: 4, }}>
+                    <View style={{ justifyContent: "center", marginTop: 30 }}>
+
+                        <Image style={{ top: 0, alignItems: 'center', left: 25, height: 290, width: 350, }} source={require('../../src/Assets/BuyCoin/rect1.png')} />
+                        <Image style={{ top: -260, alignItems: 'center', left: 140, width: 118, }} source={require('../../src/Assets/BuyCoin/sale.png')} />
+                        <Image style={{ top: -240, alignItems: 'center', left: 100, width: 200, height: 20 }} source={require('../../src/Assets/BuyCoin/momentjs.png')} />
+                        <Image style={{ top: -235, alignItems: 'center', left: 103, width: 200, height: 10 }} source={require('../../src/Assets/BuyCoin/days.png')} />
+
+                        <View style={{ flexDirection: 'row' }}>
+                            <Image style={{ top: -205, alignItems: 'center', left: 60, width: 90, height: 15 }} source={require('../../src/Assets/BuyCoin/start.png')} />
+                            <Image style={{ top: -205, alignItems: 'center', left: 170, width: 75, height: 15 }} source={require('../../src/Assets/BuyCoin/end.png')} />
+                            <Image style={{ top: -225, alignItems: 'center', width: 300, right: 110 }} source={require('../../src/Assets/line.png')} />
                         </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
-                            <Text style={{ color: "#4FAEFD", marginTop: -15, fontSize: 11 }}>2022-05-09</Text>
-                            <Text style={{ color: "#4FAEFD", marginTop: -15, fontSize: 11 }}>2022-12-30</Text>
+
+                        <View style={{ flexDirection: 'row' }}>
+                            <Image style={{ top: -200, alignItems: 'center', left: 65, width: 75, height: 10 }} source={require('../../src/Assets/BuyCoin/5.png')} />
+                            <Image style={{ top: -200, alignItems: 'center', left: 185, width: 75, height: 10 }} source={require('../../src/Assets/BuyCoin/12.png')} />
                         </View>
+
+                        <View style={{}}>
+                            <Image style={{ top: -165, alignItems: 'center', width: 250, left: 75, height: 5 }} source={require('../../src/Assets/BuyCoin/bar.png')} />
+                            <Image style={{ top: -169, alignItems: 'center', width: 15, left: 300, height: 3 }} source={require('../../src/Assets/BuyCoin/398.png')} />
+                            <Image style={{ top: -176, alignItems: 'center', width: 12, left: 310, height: 12 }} source={require('../../src/Assets/BuyCoin/linear.png')} />
+                            <Image style={{ top: -174, alignItems: 'center', width: 50, left: 75, height: 5 }} source={require('../../src/Assets/BuyCoin/298.png')} />
+                            <Image style={{ top: -150, alignItems: 'center', width: 200, left: 105, height: 14 }} source={require('../../src/Assets/BuyCoin/flex.png')} />
+
+                        </View>
+
 
                     </View>
+                    <View style={{ justifyContent: "center", }}>
 
-                    {/* <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:15}}>
-            <Text style={{color:"white"}}>Starts At</Text>
-                <Text style={{color:"white"}}>ENDS AT</Text>
-            </View> */}
-                    <View style={{ borderWidth: 1, borderColor: '#403E62', height: '30%', margin: 10, borderRadius: 8, padding: 10 }}>
-                        <Text style={{ color: "white", fontWeight: 'bold', marginTop: 12 }}>Buy Tokens Here By Card Or Crypto</Text>
-                        <Text style={{ color: "white", marginTop: 5, fontSize: 13, backgroundColor: 'green', borderRadius: 5, padding: 3 }}>⚠️ New Ico Phase are available now. Now you can get some extra facility when buy coin</Text>
-                        <View
-                            style={{
-                                marginTop: 10,
-                                borderBottomColor: '#403E62',
-                                borderBottomWidth: StyleSheet.hairlineWidth,
-                            }}
-                        />
-
-                        <Text style={{ color: "white", marginTop: 10 }}>Coin Amount*</Text>
-                        <TextInput style={{ color: "white", fontSize: 11 }} placeholder='Amount'></TextInput>
-                        <Text style={{ color: "grey", marginTop: -10, fontSize: 10 }}>(5.0000X0 = 0.00 USD) ($0.00 = 0.00000000 BTC)</Text>
-                    </View>
-
-                    <View style={{ borderWidth: 1, borderColor: '#403E62', height: '30%', margin: 10, borderRadius: 8, padding: 10 }}>
-                        <Text style={{ color: "white", fontWeight: 'bold' }}>Payment Type</Text>
-                        {/* <CheckBox />
-        <Text>Coin Payment</Text> */}
-        <View
-                            style={{
-                                marginTop: 10,
-                                borderBottomColor: '#403E62',
-                                borderBottomWidth: StyleSheet.hairlineWidth,
-                            }}
-                        />
-        
-                        <Text style={{ color: "grey", marginTop: 5 }}>Select Bank*</Text>
-                        <TextInput style={{ color: "white" }} placeholder='Select Bank'></TextInput>
-                        <Text style={{ color: "grey", marginTop: 5 }}>Attach Payment Receipt*</Text>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
-                           <TouchableOpacity><Text style={{ color: 'white', borderWidth: 1,  borderColor: '#403E62', fontWeight: 'bold', borderRadius: 8, padding: 5  }}>Choose File</Text></TouchableOpacity>
-                            <Text style={{ color: "white", padding: 5  }}>No File Chosen</Text>
-
-                        </View>
-                        <View
-                            style={{
-                                marginTop: 10,
-                                borderBottomColor: '#403E62',
-                                borderBottomWidth: StyleSheet.hairlineWidth,
-                            }}
-                        />
-                        <Text style={{ color: "grey", alignSelf: 'flex-end', padding: 5, fontSize: 10 }}>File is Required</Text>
-
-                    </View>
-                    <View style={{ borderWidth: 1, borderColor: '#8349FC', margin: 10, borderRadius: 6, padding: 10 }}>
-                    <LinearGradient colors={['#4DB5FE','#8349FC', ]} style={styles.linearGradient}  start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
-                        <Text style={{ color: 'white',  fontWeight: 'bold', borderRadius: 6, padding: 6, }}>Buy Coin</Text>
-                        </LinearGradient>
-                    </View>
-                    {/* <View >
-
+                        <Image style={{ top: -100, alignItems: 'center', left: 25, height: 200, width: 350, }} source={require('../../src/Assets/BuyCoin/rect2.png')} />
+                        <Image style={{ top: -270, alignItems: 'center', left: 65, height: 15, width: 250, }} source={require('../../src/Assets/BuyCoin/bt.png')} />
+                        <Image style={{ top: -265, alignItems: 'center', left: 60, height: 35, width: 265, }} source={require('../../src/Assets/BuyCoin/lb.png')} />
+                        <Image style={{ top: -303, alignItems: 'center', left: 63, height: 40, width: 20, }} source={require('../../src/Assets/BuyCoin/sr.png')} />
+                        <Image style={{ top: -328, alignItems: 'center', left: 70, height: 10, width: 9, }} source={require('../../src/Assets/BuyCoin/mega.png')} />
+                        <Image style={{ top: -343, alignItems: 'center', left: 90, height: 20, width: 220, }} source={require('../../src/Assets/BuyCoin/ico.png')} />
+                        <Image style={{ top: -325, alignItems: 'center', width: 300, left: 50 }} source={require('../../src/Assets/line.png')} />
+                        <Image style={{ top: -315, alignItems: 'center', left: 65, height: 10, width: 80, }} source={require('../../src/Assets/BuyCoin/amt.png')} />
+                        <Image style={{ top: -323, alignItems: 'center', left: 150, height: 5, width: 60, }} source={require('../../src/Assets/BuyCoin/bonus.png')} />
                         <TouchableOpacity>
-                            <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Buy Coin</Text>
+                            <Image style={{ top: -310, alignItems: 'center', left: 75, height: 7, width: 60, }} source={require('../../src/Assets/BuyCoin/yamt.png')} />
+                        </TouchableOpacity>
+                        <Image style={{ top: -300, alignItems: 'center', width: 300, left: 50 }} source={require('../../src/Assets/line.png')} />
+                        <Image style={{ top: -295, alignItems: 'center', left: 65, height: 8, width: 160, }} source={require('../../src/Assets/BuyCoin/66.png')} />
+                    </View>
+                    <View style={{ justifyContent: "center", }}>
+                        <Image style={{ top: -245, alignItems: 'center', left: 25, height: 250, width: 350, }} source={require('../../src/Assets/BuyCoin/rect3.png')} />
+                    </View>
+                    <View style={{ justifyContent: "center", top: -40 }}>
+                        <Image style={{ top: -430, alignItems: 'center', left: 65, height: 15, width: 110, }} source={require('../../src/Assets/BuyCoin/p.png')} />
+                        <TouchableOpacity>
+                            <Image style={{ top: -420, alignItems: 'center', left: 65, height: 17, width: 16, }} source={require('../../src/Assets/BuyCoin/b.png')} />
+                        </TouchableOpacity>
 
-                        </TouchableOpacity>      
-                                      </View> */}
+                        <Image style={{ top: -433, alignItems: 'center', left: 87, height: 10, width: 65, }} source={require('../../src/Assets/BuyCoin/cp.png')} />
+
+                        <TouchableOpacity style={{ left: 95, top: -28 }}>
+                            <Image style={{ top: -420, alignItems: 'center', left: 65, height: 17, width: 16, }} source={require('../../src/Assets/BuyCoin/b.png')} />
+                            <Image style={{ top: -435, alignItems: 'center', left: 67, height: 12, width: 12, }} source={require('../../src/Assets/BuyCoin/linear.png')} />
+
+                        </TouchableOpacity>
+                        <Image style={{ top: -473, alignItems: 'center', left: 180, height: 10, width: 65, }} source={require('../../src/Assets/BuyCoin/dep.png')} />
+                        <View style={{ left: 190, top: -67 }}>
+                            <TouchableOpacity>
+                                <Image style={{ top: -420, alignItems: 'center', left: 65, height: 17, width: 16, }} source={require('../../src/Assets/BuyCoin/b.png')} />
+                            </TouchableOpacity>
+                            <Image style={{ top: -433, alignItems: 'center', left: 87, height: 10, width: 55, }} source={require('../../src/Assets/BuyCoin/cred.png')} />
+                        </View>
+                        <Image style={{ top: -480, alignItems: 'center', width: 300, left: 50 }} source={require('../../src/Assets/line.png')} />
+
+                    </View>
                 </ScrollView>
 
-                {/* <View style={{ borderWidth: 1, borderColor: 'white', height: '30%', margin: 10, borderRadius: 6, padding: 10 }}>
-                    <Text style={{ color: "white", fontWeight: 'bold' }}>Payment Type</Text>
-            
-                    <Text style={{ color: "grey", marginTop: 5 }}>Select Bank*</Text>
-                    <TextInput style={{ color: "white" }} placeholder='Select Bank'></TextInput>
-                    <Text style={{ color: "grey", marginTop: 5 }}>Attach Payment Receipt*</Text>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
-                        <Text style={{ color: "white", fontWeight: 'bold' }}>Choose File</Text>
-                        <Text style={{ color: "white" }}>No File Chosen</Text>
-                    </View>
+                <View style={{ justifyContent: "center", top: -210, left: 10 }}>
+                    <Image style={{}} source={require('../../src/Assets/rectangle5.png')} />
+                    <TouchableOpacity>
+                        <Image style={{ top: -45, left: 30 }} source={require('../../src/Assets/1.png')} />
+                    </TouchableOpacity>
 
-                </View> */}
-                {/* <View style={{ borderWidth: 1, borderColor: 'white', height: '30%', margin: 10, borderRadius: 6, padding: 10 }}>
-                    <Text style={{ color: "white", fontWeight: 'bold' }}>Payment Type</Text>
-                    <Text style={{ color: "grey", marginTop: 5 }}>Select Bank*</Text>
-                    <TextInput style={{ color: "white" }} placeholder='Select Bank'></TextInput>
-                    <Text style={{ color: "grey", marginTop: 5 }}>Attach Payment Receipt*</Text>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
-                        <Text style={{ color: "white", fontWeight: 'bold' }}>Choose File</Text>
-                        <Text style={{ color: "white" }}>No File Chosen</Text>
-                    </View>
-                </View> */}
-                {/* <View>
-        <TouchableOpacity style={styles.btn1}>
-            <Text style={styles.buyBtn}>Buy Coin</Text>
-        </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={{ top: -85, left: 90 }} source={require('../../src/Assets/2.png')} />
+                    </TouchableOpacity>
 
-    </View> */}
-                {/* <View>
-        <TouchableOpacity>
-            <Text style={styles.history}>Buy Coin History</Text>
-        </TouchableOpacity>
-    </View> */}
-                {/* <View style={{
-        borderBottomColor: 'black',
-        borderBottomWidth: StyleSheet.hairlineWidth,
-    }}>
-        <Text style={styles.line}>------------------------</Text>
-    </View> */}
-                {/* <View style={styles.sale}>
-        <Text style={styles.saleEndsIn}>Sale Ends In</Text>
-        <Text style={styles.count}>21 : 10 : 32 : 52</Text>
-    </View> */}
+                    <TouchableOpacity>
+                        <Image style={{ top: -170, left: 150 }} source={require('../../src/Assets/3.png')} />
+                    </TouchableOpacity>
 
+                    <TouchableOpacity>
+                        <Image style={{ top: -205, left: 250 }} source={require('../../src/Assets/4.png')} />
+                    </TouchableOpacity>
 
+                    <TouchableOpacity>
+                        <Image style={{ top: -242, left: 310 }} source={require('../../src/Assets/5.png')} />
+                    </TouchableOpacity>
 
+                </View>
             </View>
         </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'black',
-
-    },
     head: {
-        fontFamily: 'IBM Plex Sans Thai Looped',
-        fontSize: 26,
-        fontStyle: 'normal',
-        fontWeight: '700',
-        letterSpacing: 0.001,
-        textAlign: 'center',
-        color: '#FFFFFF',
-        position: 'absolute',
-        height: 41,
-        left: 149,
-        top: 59,
-        width: 130,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+        padding: 8,
     },
-    dashboard: {
+    addWallet: {
+        width: 190,
+        alignItems: "center",
+        height: 75,
+        left: 100
+    },
+    rectangle1: {
+        width: 400,
+        alignItems: "center",
+        height: 50,
+    },
+    rectangle2: {
+        marginTop: 15,
+        width: 370,
+        alignItems: "center",
+        height: 45,
+        left: 12,
+    },
+    bitcoin: {
+        top: -35,
+        width: 20,
+        alignItems: "center",
+        height: 20,
+        left: 40
+    },
+
+    BTC: {
+        top: -50,
         width: 25,
-        height: 25
+        alignItems: "center",
+        height: 10,
+        left: 80,
     },
-    linearGradient: {
+
+    rectangle3: {
+        top: -35,
+        width: 370,
+        alignItems: "center",
+        height: 45,
+        left: 12,
+
+    },
+
+    ethereum: {
+        top: -70,
+        width: 20,
+        alignItems: "center",
+        height: 20,
+        left: 40
+    },
+
+    ETH: {
+        top: -85,
+        width: 24,
+        alignItems: "center",
+        height: 10,
+        left: 80
+    },
+
+    rectangle4: {
+        top: -75,
+        width: 370,
+        alignItems: "center",
+        height: 45,
+        left: 12,
+
+    },
+    hdl1: {
+        top: -110,
+        width: 20,
+        alignItems: "center",
+        height: 20,
+        left: 40
+    },
+
+    HDL: {
+        top: -125,
+        width: 24,
+        alignItems: "center",
+        height: 10,
+        left: 80
+    },
+    centeredView: {
         flex: 1,
-        paddingLeft: 15,
-        paddingRight: 15,
-        borderRadius: 37.5,
-        // backgroundColor:linear-gradient("90deg", "#4DB5FE" "0%", "#8349FC" "100%");
-      },
-    // btn1: {
-    //     position: 'absolute',
-    //     width: 170,
-    //     height: 54,
-    //     left: 38,
-    //     top: 143,
-    //     background: linear-gradient(90deg, #4DB5FE 0%, #8349FC 100%)
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    // modalView: {
+    //     margin: 20,
+    //     backgroundColor: "white",
+    //     // backgroundColor: "#161729",
+    //     height: 500,
+    //     width: 350,
+    //     borderRadius: 20,
+    //     padding: 35,
+    //     alignItems: "center",
+    //     shadowColor: "#000",
+    //     shadowOffset: {
+    //         width: 0,
+    //         height: 2
+    //     },
+    //     shadowOpacity: 0.25,
+    //     shadowRadius: 4,
+    //     elevation: 5
     // },
-    // buyBtn: {
-    //     fontFamily: 'IBM Plex Sans Thai Looped',
-    //     fontStyle: 'normal',
-    //     fontSize: 16,
-    //     textAlign: 'center',
-    //     position: 'absolute',
-    //     letterSpacing: 0.001,
-    //     color: '#FFFFFF',
-    //     fontWeight: '600',
-    //     width: 83,
-    //     height: 25,
-    //     left: 82,
-    //     top: 157,
-    // },
-    // history: {
-    //     fontFamily: 'IBM Plex Sans Thai Looped',
-    //     fontStyle: 'normal',
-    //     fontSize: 16,
-    //     textAlign: 'center',
-    //     position: 'absolute',
-    //     letterSpacing: 0.001,
-    //     color: '#FFFFFF',
-    //     fontWeight: '600',
-    //     width: 139,
-    //     height: 25,
-    //     left: 251,
-    //     top: 157
-    // },
-    // line: {
-    //     position: 'absolute',
-    //     width: 354,
-    //     height: 0,
-    //     left: 37,
-    //     top: 234,
-    //     opacity: 0.1,
-    //     border: '1 dashed #FFFFFF',
-    //     color: '#FFFFFF',
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    buttonOpen: {
+        backgroundColor: "#F194FF",
+    },
+    buttonClose: {
+        backgroundColor: "#2196F3",
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+    },
 
-    // },
-    // sale: {
-    //     boxSizing: 'border-box',
-    //     position: 'absolute',
-    //     width: 388,
-    //     height: 342,
-    //     left: 20,
-    //     top: 259,
-    //     // backgroundColor: linear-gradient(193.08deg, #222441 11.64%, #050506 89.1%),
-    //     // border: 1px solid #403E62,
-    //     // boxShadow: 0px 0px 15px rgba(46, 46, 46, 0.38),
-    //     borderRadius: 8
-    // },
-    // saleEndsIn: {
-    //     fontFamily: 'IBM Plex Sans Thai Looped',
-    //     fontStyle: 'normal',
-    //     fontWeight: '600',
-    //     fontSize: 18,
-    //     lineHeight: 30,
-    //     textAlign: 'center',
-    //     letterSpacing: 0.001,
-    //     color: '#F8F8F8',
-    //     position: 'absolute',
-    //     width: 132,
-    //     height: 25,
-    //     left: 148,
-    //     top: 188,
-    // },
-    // count: {
-    //     fontFamily: 'IBM Plex Sans Thai Looped',
-    //     fontStyle: 'normal',
-    //     fontWeight: '600',
-    //     fontSize: 40,
-    //     lineHeight: 66,
-    //     display: 'flex',
-    //     textAlign: 'center',
-    //     alignItems: 'center',
-    //     letterSpacing: 0.001,
-    //     color: '#F8F8F8',
-    //     position: 'absolute',
-    //     width: 336,
-    //     height: 48,
-    //     left: 46,
-    //     top: 337,
-    // },
+    loginButton2: {
+        top: -290,
+        position: 'absolute',
+        width: 200,
+        alignItems: "center",
+        height: 75,
+        left: 110
+    },
 });
-

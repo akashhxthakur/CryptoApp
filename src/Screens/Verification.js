@@ -96,9 +96,9 @@ export default function Verification() {
                             <View style={{ justifyContent: 'center' }}>
                                 <Image style={{ top: -530, left: 70 }} source={require('../../src/Assets/Profile/Verification/plzz.png')} />
                             </View>
-<Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
+                            <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
                             <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 450 }}>Upload</Text>
-                           
+
 
                         </View>
                     </View>
