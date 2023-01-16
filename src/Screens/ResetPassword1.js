@@ -1,7 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import LoginSuccess from './LoginSuccess'
+import { useNavigation } from '@react-navigation/native'
 
 export default function ResetPassword1() {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={{ marginTop: 20 }}>
@@ -26,7 +30,7 @@ export default function ResetPassword1() {
                     <Image style={styles.validationMssg} source={require('../../src/Assets/validationMssg.png')} />
                     {/* <Text style={{ color: 'grey', position: 'absolute', fontSize: 10, fontWeight: 'bold', top: 155, right: 10 }}>Forgot password ?</Text> */}
                     <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
-                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 235 }}>Sign In</Text>
+                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 235 }} onPress={() => navigation.navigate(LoginSuccess)}>Sign In</Text>
                     {/* <Image style={styles.loginButton3} source={require('../../src/Assets/createnewaccount.png')} /> */}
 
                     {/* <View style={{justifyContent: 'center' }}>

@@ -6,13 +6,10 @@ export default function Verification() {
     return (
         <View style={styles.container}>
             <View style={{ justifyContent: 'center', alignItems: 'center', height: '50%' }}>
-                <Image style={{ width: '100%', height: '90%' }} source={require('../../src/Assets/Profile/Verification/Rectangle.png')} />
-                <TouchableOpacity>
-                    <Image style={{ top: -310, right: 170 }} source={require('../../src/Assets/Profile/Vector.png')} />
-                </TouchableOpacity>
-                <Image style={{ top: -330, width: 130, height: 15 }} source={require('../../src/Assets/Profile/Verification/verification.png')} />
+                <Image style={{ width: '100%', height: '100%' }} source={require('../../src/Assets/Profile/Verification/Rectangle.png')} />
+                
             </View>
-            <View style={{ justifyContent: "center", }}>
+            <View style={{ justifyContent: "center",marginTop: -50 }}>
                 <Image style={{ top: -270, height: 50, width: 50, left: 25 }} source={require('../Assets/Profile/Verification/call.png')} />
                 <Image style={{ top: -305, height: 10, width: 85, left: 90 }} source={require('../Assets/Profile/Verification/num.png')} />
                 <Image style={{ top: -300, height: 10, width: 210, left: 90 }} source={require('../Assets/Profile/Verification/valid.png')} />

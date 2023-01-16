@@ -1,7 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import Profile from './Profile';
 
 export default function ChangePassword() {
+    const navigation = useNavigation();
+
   return (
         <View style={styles.container}>
             <View style={{ justifyContent: 'center', alignItems: 'center', height: '50%' }}>
@@ -42,7 +46,7 @@ export default function ChangePassword() {
                                     <Image style={{ top: -370, left: 10 }} source={require('../../src/Assets/line.png')} />
                                 </TouchableOpacity>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity  onPress={() => navigation.navigate(Profile)}>
             <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
             <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: -400 }}>Update</Text>
             </TouchableOpacity>

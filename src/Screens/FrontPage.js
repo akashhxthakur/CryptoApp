@@ -1,11 +1,15 @@
 import React from 'react'
 import { View, Text, SafeAreaView, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import CreateAccount from './CreateAccount';
+import Login from './Login';
 
 export default function FrontPage() {
-    return (
+    const navigation = useNavigation();
 
+    return (
         <View style={styles.container}>
-            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 20, height: '50%' }}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -30, height: '50%' }}>
                 <Image source={require('../../src/Assets/eclipse2.png')} />
                 <Image style={styles.firstImage} source={require('../../src/Assets/frontPage.png')} />
             </View>
@@ -17,13 +21,13 @@ export default function FrontPage() {
                     <TouchableOpacity>
 
                         <Image style={styles.loginButton} source={require('../../src/Assets/loginButton.png')} />
-                        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 24 }}>Create Account</Text>
+                        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 24 }} onPress={() =>navigation.navigate(CreateAccount)}>Create Account</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ marginTop: 30, alignItems: 'center' }}>
                     <TouchableOpacity>
                         <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
-                        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 24 }}>Login</Text>
+                        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 24 }} onPress={() =>navigation.navigate(Login)}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>

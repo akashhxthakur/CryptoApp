@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView, Modal } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import EditProfile from './EditProfile';
+import Verification from './Verification';
+import ChangePassword from './ChangePassword';
 
 export default function Profile() {
     const [modalVisible, setModalVisible] = useState(false);
+    const navigation = useNavigation();
+
 
     return (
         <View style={styles.container}>
             <View style={{ justifyContent: 'center', alignItems: 'center', height: '50%' }}>
-                <Image style={{ width: '100%', height: '90%' }} source={require('../../src/Assets/Profile/Rectangle.png')} />
-                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
-                    <Image style={{ top: -310, right: 170 }} source={require('../../src/Assets/Profile/Vector.png')} />
-                </TouchableOpacity>
-                <Image style={{ top: -330, width: "20%", height: 20 }} source={require('../../src/Assets/Profile/Profile.png')} />
+                <Image style={{ top: -360, width: "20%", height: 20 }} source={require('../../src/Assets/Profile/Profile.png')} />
             </View>
             <View style={{ justifyContent: "center", alignItems: 'center', }}>
                 <Image style={{ top: -290, height: 110, width: 110 }} source={require('../Assets/Profile/person.png')} />
@@ -21,12 +23,12 @@ export default function Profile() {
             <View style={{ top: -150, height: '100%' }}>
                 <Image style={{ top: -160, width: 600, height: 600, left: -100 }} source={require('../Assets/Profile/linesBg.png')} />
                 <View style={{ flexDirection: 'row' }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate(EditProfile)}>
                         <Image style={{ top: -600, width: 160, height: 160, left: 20 }} source={require('../Assets/Profile/rect1.png')} />
                         <Image style={{ top: -720, width: 50, height: 50, left: 75 }} source={require('../Assets/Profile/prsn.png')} />
                         <Image style={{ top: -710, width: 60, height: 23, left: 70 }} source={require('../Assets/Profile/pf.png')} />
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate(Verification)}>
                         <Image style={{ top: -600, width: 160, height: 160, left: 50 }} source={require('../Assets/Profile/rect2.png')} />
                         <Image style={{ top: -720, width: 50, height: 50, left: 103 }} source={require('../Assets/Profile/pink.png')} />
                         <Image style={{ top: -760, width: 25, height: 25, left: 115 }} source={require('../Assets/Profile/sv1.png')} />
@@ -34,7 +36,7 @@ export default function Profile() {
                     </TouchableOpacity>
                 </View>
                 <View style={{ flexDirection: 'row', top: -80 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate(ChangePassword)}>
                         <Image style={{ top: -600, width: 160, height: 160, left: 20 }} source={require('../Assets/Profile/rect2.png')} />
                         <Image style={{ top: -720, width: 51, height: 50, left: 80 }} source={require('../Assets/Profile/p.png')} />
                         <Image style={{ top: -760, width: 25, height: 25, left: 95 }} source={require('../Assets/Profile/key.png')} />
@@ -49,7 +51,7 @@ export default function Profile() {
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={styles.centeredView}>
+            {/* <View style={styles.centeredView}>
                 <Modal
                     animationType="slide"
                     transparent={true}
@@ -59,7 +61,6 @@ export default function Profile() {
                         setModalVisible(!modalVisible);
                     }}
                 >
-                    {/* <View style={styles.centeredView}> */}
                     <View >
                         <Image style source={require('../../src/Assets/Profile/Sidebar/rect.png')}></Image>
                         <View style={{ top: -1110 }}>
@@ -136,7 +137,7 @@ export default function Profile() {
                         </View>
                     </View>
                 </Modal>
-            </View>
+            </View> */}
         </View>
     )
 }

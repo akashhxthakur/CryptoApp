@@ -1,13 +1,14 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import Login from './Login'
+import { useNavigation } from '@react-navigation/native'
 
 export default function CreateAccount1() {
+    const navigation = useNavigation();
+
   return (
 <View style={styles.container}>
-            <View style={{ marginTop: 20 }}>
-                <Text style={{ color: 'white', alignSelf: 'center', fontSize: 25, fontWeight: 'bold' }}>Log into your account</Text>
-            </View>
-            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10, height: '50%' }}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -40, height: '50%' }}>
                 <Image source={require('../../src/Assets/eclipse2.png')} />
                 <Image style={styles.firstImage} source={require('../../src/Assets/frontPage.png')} />
             </View>
@@ -25,7 +26,7 @@ export default function CreateAccount1() {
                     <Image style={styles.verify} source={require('../../src/Assets/verify.png')} />
                     {/* <Text style={{ color: 'grey', position: 'absolute', fontSize: 10, fontWeight: 'bold', top: 155, right: 10 }}>Forgot password ?</Text> */}
                     <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
-                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 255 }}>Sign Up</Text>
+                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 295 }}onPress={() =>navigation.navigate(Login)}>Sign Up</Text>
                     {/* <Image style={styles.loginButton3} source={require('../../src/Assets/createnewaccount.png')} /> */}
 
                     {/* <View style={{justifyContent: 'center' }}>
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     },
 
     loginButton2: {
-        top: 230,
+        top: 273,
         position: 'absolute',
         width: 200,
         alignItems: "center",

@@ -1,15 +1,15 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import Profile from './Profile';
 
 export default function EditProfile() {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={{ justifyContent: 'center', alignItems: 'center', height: '50%' }}>
                 <Image style={{ width: '100%', height: '90%' }} source={require('../../src/Assets/Profile/Rectangle.png')} />
-                <TouchableOpacity>
-                    <Image style={{ top: -310, right: 170 }} source={require('../../src/Assets/Profile/Vector.png')} />
-                </TouchableOpacity>
-                <Image style={{ top: -330, width: 100, height: 15 }} source={require('../../src/Assets/Profile/EditProfile.png')} />
             </View>
             <View style={{ justifyContent: "center", alignItems: 'center', }}>
                 <Image style={{ top: -290, height: 110, width: 110 }} source={require('../Assets/Profile/person.png')} />
@@ -57,7 +57,7 @@ export default function EditProfile() {
                                     <Image style={{ top: -325, left: 10 }} source={require('../../src/Assets/line.png')} />
                                 </TouchableOpacity>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate(Profile)}>
             <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
             <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: -400 }}>Update</Text>
             </TouchableOpacity>
@@ -68,7 +68,7 @@ export default function EditProfile() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#15172C'
+        backgroundColor: '#15172C',marginTop: -70
     },
     firstImage: {
         height: 143,
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     },
 
     loginButton2: {
-        top: 285,
+        top: -425,
         position: 'absolute',
         width: 200,
         alignItems: "center",

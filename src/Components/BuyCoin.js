@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView, TextInput, CheckBox, Button, Pressable, Modal } from 'react-native'
-export default function Wallet() {
+import { useNavigation } from '@react-navigation/native'
+import Profile from '../Screens/Profile';
+
+export default function BuyCoin() {
     // const [active , setactive] = useState(false);
+    const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
 
 
@@ -60,7 +64,10 @@ export default function Wallet() {
                                     <Image style={{ left: 15, height: 20, width: 20 }} source={require('../../src/Assets/x.png')} />
                                 </TouchableOpacity>
                                 <Image style={{ width: 78, height: 20, left: 125, top: -20 }} source={require('../../src/Assets/Profile/Profile.png')} />
-                                <Image style={{ width: "20%", height: 80, left: 125 }} source={require('../../src/Assets/Profile/person.png')} />
+                                <TouchableOpacity onPress={() => navigation.navigate(Profile)}>
+                <Image style={{ width: "20%", height: 80, left: 125 }} source={require('../Assets/Profile/person.png')} />
+
+                </TouchableOpacity>
                                 <Image style={{ top: 10, width: 200, height: 18, left: 70 }} source={require('../../src/Assets/Profile/welcomeUser.png')} />
                                 <Image style={{ top: 30, width: 250, height: 1, left: 50 }} source={require('../../src/Assets/Profile/Sidebar/--.png')} />
                                 <ScrollView style={{ top: 40, height: '100%' }}>
@@ -215,7 +222,7 @@ export default function Wallet() {
                         <Image style={{ top: -85, left: 90 }} source={require('../../src/Assets/2.png')} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate(BuyCoin)}>
                         <Image style={{ top: -170, left: 150 }} source={require('../../src/Assets/3.png')} />
                     </TouchableOpacity>
 
@@ -236,7 +243,7 @@ const styles = StyleSheet.create({
     head: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 10,
+        marginTop: -8,
         padding: 8,
     },
     addWallet: {

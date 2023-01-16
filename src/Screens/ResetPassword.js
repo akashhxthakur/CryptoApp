@@ -1,7 +1,12 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import ResetPassword1 from './ResetPassword1'
+import { useNavigation } from '@react-navigation/native'
+
 
 export default function ResetPassword() {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={{ marginTop: 20 }}>
@@ -24,7 +29,7 @@ export default function ResetPassword() {
                     <Image style={styles.emailIcon} source={require('../../src/Assets/emailIcon.png')} />
 
                     <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
-                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 225 }}>Continue</Text>
+                    <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 225 }} onPress={() => navigation.navigate(ResetPassword1)}>Continue</Text>
 
                 </View>
 

@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView, TextInput, CheckBox, Button, Pressable, Modal } from 'react-native'
+import FrontPage from './FrontPage';
+import { useNavigation } from '@react-navigation/native'
+import Profile from './Profile';
+import BuyCoin from '../Components/BuyCoin';
 export default function Wallet() {
     // const [active , setactive] = useState(false);
+    const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
     const [modal1Visible, setModal1Visible] = useState(false);
+    const [modal2Visible, setModal2Visible] = useState(false);
+
 
 
     return (
@@ -11,7 +18,7 @@ export default function Wallet() {
             <View style={{ flex: 1, backgroundColor: '#161729', }}>
 
                 <View style={styles.head}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => setModal2Visible(!modal2Visible)}>
                         <Image source={require('../../src/Assets/dashboard.png')} style={{ height: 20, width: 20, color: '#02A3F7' }} />
                     </TouchableOpacity>
                     <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', textAlign: 'center', left: 10 }}>iHODL Wallet</Text>
@@ -19,7 +26,7 @@ export default function Wallet() {
                         flexDirection: 'row',
                         justifyContent: 'space-between'
                     }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate(FrontPage)}>
                             <Image style={{ height: 21, width: 20, right: 10 }} source={require('../../src/Assets/off.png')} />
 
                         </TouchableOpacity><TouchableOpacity>
@@ -28,6 +35,98 @@ export default function Wallet() {
                         </TouchableOpacity>
                     </View>
                 </View>
+                <View style={styles.centered1View}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modal2Visible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModal2Visible(!modal2Visible);
+                    }}
+                >
+                    {/* <View style={styles.centeredView}> */}
+                    <View >
+                        <Image style source={require('../../src/Assets/Profile/Sidebar/rect.png')}></Image>
+                        <View style={{ top: -1110 }}>
+                            <TouchableOpacity onPress={() => setModal2Visible(!modal2Visible)}>
+                                <Image style={{ left: 15, height: 20, width: 20 }} source={require('../../src/Assets/x.png')} />
+                            </TouchableOpacity>
+                            <Image style={{ width: 78, height: 20, left: 125, top: -20 }} source={require('../../src/Assets/Profile/Profile.png')} />
+
+                            <TouchableOpacity onPress={() => navigation.navigate(Profile)}>
+                            <Image style={{ width: "20%", height: 80, left: 125 }} source={require('../../src/Assets/Profile/person.png')} />
+
+                            </TouchableOpacity>
+                            <Image style={{ top: 10, width: 200, height: 18, left: 70 }} source={require('../../src/Assets/Profile/welcomeUser.png')} />
+                            <Image style={{ top: 30, width: 250, height: 1, left: 50 }} source={require('../../src/Assets/Profile/Sidebar/--.png')} />
+                            <ScrollView style={{ top: 40, height: '100%' }}>
+                                <TouchableOpacity>
+                                    <Image style={{ top: 10, width: 250, height: 40, left: 50 }} source={require('../../src/Assets/Profile/Sidebar/rect1.png')} />
+                                    <Image style={{ top: -18, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/dash.png')} />
+                                    <Image style={{ top: -30, width: 70, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Dashboard.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity  onPress={() => navigation.navigate(BuyCoin)}>
+                                    <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/c.png')} />
+                                    <Image style={{ top: -15, width: 50, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/bc.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/sr.png')} />
+                                    <Image style={{ top: -15, width: 80, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Send/Receive.png')} />
+                                    <Image style={{ top: -25, width: 5, height: 5, left: 280 }} source={require('../../src/Assets/Profile/Sidebar/v.png')} />
+
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 12, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/t.png')} />
+                                    <Image style={{ top: -15, width: 130, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/st.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/w.png')} />
+                                    <Image style={{ top: -15, width: 40, height: 11, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Wallet.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/s.png')} />
+                                    <Image style={{ top: -15, width: 60, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/sc.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 12, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/$.png')} />
+                                    <Image style={{ top: -15, width: 110, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/th.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 15, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/a.png')} />
+                                    <Image style={{ top: -15, width: 80, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/ab.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/o.png')} />
+                                    <Image style={{ top: -15, width: 35, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Offer.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 15, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/q.png')} />
+                                    <Image style={{ top: -15, width: 22, height: 10, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/FAQ.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 16, height: 15, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/set.png')} />
+                                    <Image style={{ top: -15, width: 50, height: 12, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Settings.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -1, width: 16, height: 14, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/out.png')} />
+                                    <Image style={{ top: -15, width: 44, height: 13, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/Log.png')} />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ marginTop: 10 }}>
+                                    <Image style={{ top: -5, width: 50, height: 9, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/visit.png')} />
+                                </TouchableOpacity>
+                                <Image style={{ top: 5, width: 100, height: 10, left: 90 }} source={require('../../src/Assets/Profile/Sidebar/nov.png')} />
+                                <Image style={{ top: -5, width: 40, height: 8, left: 195 }} source={require('../../src/Assets/Profile/Sidebar/time.png')} />
+                                <Image style={{ top: 0, width: 250, height: 1, left: 50 }} source={require('../../src/Assets/Profile/Sidebar/line.png')} />
+                                <Image style={{ top: 10, width: 30, height: 30, left: 65 }} source={require('../../src/Assets/Profile/Sidebar/prsn.png')} />
+                                <Image style={{ top: -12, width: 100, height: 13, left: 110 }} source={require('../../src/Assets/Profile/Sidebar/peter.png')} />
+
+                            </ScrollView>
+
+                        </View>
+                    </View>
+                </Modal>
+            </View>
                 <View style={styles.centeredView}>
                     <Modal
                         animationType="slide"
@@ -144,12 +243,12 @@ export default function Wallet() {
                 <View style={{ justifyContent: "center", marginTop: 30 }}>
                     <TouchableOpacity onPress={() => setModalVisible(true)}>
                         <Image style={styles.addWallet} source={require('../../src/Assets/loginButton.png')} />
-                        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 25 }}>Add Wallet</Text>
+                        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: -13 }}>Add Wallet</Text>
                     </TouchableOpacity>
                 </View>
 
                 <ScrollView>
-                    <View style={{ justifyContent: "center", marginTop: 30 }}>
+                    <View style={{ justifyContent: "center", marginTop: 60 }}>
                         <Image style={styles.rectangle1} source={require('../../src/Assets/rectangle1.png')} />
                         <Text style={{ color: 'white', fontSize: 14, fontWeight: '500', position: "absolute", top: 10, left: 30 }}>Name</Text>
                         <Text style={{ color: 'white', alignSelf: 'center', fontSize: 14, fontWeight: '500', position: "absolute", top: 10, right: 100 }}>Balance</Text>
@@ -205,14 +304,15 @@ const styles = StyleSheet.create({
     head: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 10,
+        marginTop: -8,
         padding: 8,
     },
     addWallet: {
         width: 190,
         alignItems: "center",
         height: 75,
-        left: 100
+        left: 100,
+        top: -40
     },
     rectangle1: {
         width: 400,
@@ -295,6 +395,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22
+    },
+    centered1View: {
+        flex: 1,
+        justifyContent: 'flex-start',
     },
     // modalView: {
     //     margin: 20,

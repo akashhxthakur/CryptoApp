@@ -1,13 +1,15 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import LoginSuccess from './LoginSuccess';
+import CreateAccount1 from './CreateAccount1';
 
 export default function CreateAccount() {
+    const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-    <View style={{ marginTop: 20 }}>
-        <Text style={{ color: 'white', alignSelf: 'center', fontSize: 25, fontWeight: 'bold' }}>Create New Account</Text>
-    </View>
-    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10, height: '50%' }}>
+    <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -40, height: '50%' }}>
         <Image source={require('../../src/Assets/eclipse2.png')} />
         <Image style={styles.firstImage} source={require('../../src/Assets/frontPage.png')} />
     </View>
@@ -22,7 +24,7 @@ export default function CreateAccount() {
             <Image style={styles.firstName} source={require('../../src/Assets/person.png')} />
             {/* <Text style={{ color: 'grey', position: 'absolute', fontSize: 10, fontWeight: 'bold', top: 155, right: 10 }}>Forgot password ?</Text> */}
             <Image style={styles.loginButton2} source={require('../../src/Assets/loginButton.png')} />
-            <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 205 }}>Continue</Text>
+            <Text style={{ color: 'white', alignSelf: 'center', fontSize: 18, fontWeight: 'bold', position: "absolute", top: 205 }} onPress={() =>navigation.navigate(CreateAccount1)}>Continue</Text>
             {/* <Image style={styles.loginButton3} source={require('../../src/Assets/createnewaccount.png')} /> */}
 
             {/* <View style={{justifyContent: 'center' }}>
